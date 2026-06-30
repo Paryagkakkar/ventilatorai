@@ -1,0 +1,22 @@
+# Node
+node_modules/
+dist/
+.env
+.env.local
+
+# Python
+ai/venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Large/generated data (optional but recommended)
+ai/venv/ventilator_dataset.csv
+ai/training_data.csv
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

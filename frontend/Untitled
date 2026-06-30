@@ -1,0 +1,54 @@
+const express = require('express');
+const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
+
+const app = express(); // <-- THIS IS MISSING
+
+app.use(cors());
+app.use(express.json());
+
+// Load Rules
+const rules = JSON.parse(
+  fs.readFileSync(
+    path.join(__dirname, 'rules.json'),
+    'utf8'
+  )
+);
+
+// Get Recommendation
+app.post('/api/recommendation', async (req, res) => {
+  try {
+    const { condition, weight, height } = req.body;
+
+    if (!rules[condition]) {
+      return res.status(400).json({
+        error: "No rules found for this condition"
+      });
+    }
+
+    const rule = rules[condition];
+    const vt = Math.round(rule.vt_per_kg * weight);
+
+    const recommendation = {
+      mode: rule.mode,
+      vt,
+      rr: rule.rr,
+      peep: rule.peep,
+      fio2: rule.fio2
+    };
+
+    res.json(recommendation);
+
+  } catch (error) {
+    res.status(500).json({
+      error: error.message
+    });
+  }
+});
+
+const PORT = 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

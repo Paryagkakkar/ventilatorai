@@ -1,0 +1,7 @@
+{
+    "ARDS": { "mode": "VCV", "vt_per_kg": 6, "rr": 18, "peep": 10, "fio2": 60 },
+    "COPD": { "mode": "PCV", "vt_per_kg": 8, "rr": 16, "peep": 5, "fio2": 40 },
+    "Asthma": { "mode": "VCV", "vt_per_kg": 6, "rr": 20, "peep": 8, "fio2": 50 },
+    "Trauma": { "mode": "VCV", "vt_per_kg": 7, "rr": 18, "peep": 12, "fio2": 70 },
+    "Medical Emergency": { "mode": "PCV", "vt_per_kg": 6, "rr": 22, "peep": 10, "fio2": 80 }
+  }
